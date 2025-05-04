@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday Princess Alltime</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        height: 100%;
+      }
+      body {
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        background: linear-gradient(to right, #ffecd2, #fcb69f);
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* Splash Screen */
+      #splash {
+        position: fixed;
+        inset: 0;
+        background: linear-gradient(to right, #ff9a9e, #fad0c4);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
+        transition: opacity 1s ease;
+        padding: 20px;
+        text-align: center;
+      }
+
+      #splash h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+        color: white;
+      }
+
+      #start-btn {
+        padding: 12px 25px;
+        font-size: 1.2em;
+        background: white;
+        color: #ff5e78;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transition: background 0.3s;
+      }
+
+      #start-btn:hover {
+        background: #ffe2e9;
+      }
+
+      /* Main Content */
+      #main {
+        display: none;
+        max-width: 600px;
+        margin: 100px auto;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 30px 20px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        z-index: 2;
+        position: relative;
+        animation: fadeIn 1s ease;
+      }
+
+      .card-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+      }
+
+      .card-title h1 {
+        font-size: 2em;
+        color: #ff5e78;
+        margin: 0;
+      }
+
+      #main p {
+        font-size: 1.1em;
+        color: #555;
+        line-height: 1.6;
+      }
+
+      .image-photo img{
+        width: 100px;
+        height: 100px;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Balloons */
+      .balloon {
+        position: absolute;
+        width: 40px;
+        height: 60px;
+        background: #ff5e78;
+        border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+        animation: float 6s ease-in-out infinite;
+        z-index: 1;
+        pointer-events: none;
+        pointer-events: none;
+        contain: layout;
+      }
+
+      .balloon::after {
+        content: "";
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        width: 2px;
+        height: 20px;
+        background: #333;
+        transform: translateX(-50%);
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(100vh) translateX(0) rotate(0deg);
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100vh) translateX(50px) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      /* Music Button */
+      #music-btn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #ff5e78;
+        color: white;
+        border: none;
+        border-radius: 50px;
+        padding: 10px 20px;
+        font-size: 1em;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        z-index: 20;
+      }
+
+      /* Responsive */
+      @media (max-width: 767px) {
+        #main {
+          margin: 80px 20px;
+          padding: 25px 15px;
+        }
+
+        .card-title .text h1 {
+          font-size: 1.5em;
+        }
+
+        #main p {
+          font-size: 1em;
+        }
+
+        #music-btn {
+          display: none !important;
+        }
+      }
+
+      @media (max-width: 480px) {
+        #splash h1 {
+          font-size: 1.5em;
+        }
+
+        .card-title .emoji h1 {
+          font-size: 1.5em;
+        }
+
+        .card-title .text h1 {
+          font-size: 1em;
+        }
+
+        #start-btn {
+          font-size: 1em;
+          padding: 10px 20px;
+        }
+      }
+
+      .single-balloon {
+        width: 30px;
+        height: 45px;
+        position: absolute;
+        animation: rise 3s ease-out forwards;
+        z-index: 5;
+      }
+
+      @keyframes rise {
+        0% {
+          transform: translateY(0) scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100vh) scale(0.8);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Splash screen -->
+    <div id="splash">
+      <h1>🎁 Ada kejutan buatmu!</h1>
+      <button id="start-btn">Klik untuk lihat</button>
+    </div>
+
+    <!-- Main content -->
+    <div id="main">
+      <div class="card-title">
+        <h1 class="emoji">🎉</h1>
+        <div class="text">
+          <h1>Barakallahu fii umrik!</h1>
+          <h1>dearest Mom.</h1>
+        </div>
+        <h1 class="emoji">🎂</h1>
+      </div>
+      <div class="image-photo">
+        <img src="photo.png" alt="">
+      </div>
+      <p>
+        May Allah bless you with long life, good health, and endless happiness.
+Thank you for your unconditional love, your prayers, and your sacrifices.<br/>
+I pray that Allah rewards you abundantly and grants you Jannah for all the kindness you've given.<br/>
+<span style="font-weight: bold;">Amiin ya Rabbal 'alamin.</span>
+      </p>
+    </div>
+
+    <!-- Music -->
+    <audio id="bg-music" loop>
+      <source src="birthday-music.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <button id="music-btn">🔊 Music</button>
+
+    <script>
+      const splash = document.getElementById("splash");
+      const main = document.getElementById("main");
+      const startBtn = document.getElementById("start-btn");
+      const music = document.getElementById("bg-music");
+      const musicBtn = document.getElementById("music-btn");
+
+      startBtn.addEventListener("click", () => {
+        splash.style.opacity = "0";
+        setTimeout(() => (splash.style.display = "none"), 1000);
+        main.style.display = "block";
+
+        music.play().catch(() => {
+          // Autoplay blocked
+          if (window.innerWidth >= 768) {
+            musicBtn.style.display = "block";
+          }
+        });
+
+        if (window.innerWidth >= 768) {
+          musicBtn.style.display = "block";
+        }
+
+        // Generate balloons
+        for (let i = 0; i < 30; i++) {
+          const b = document.createElement("div");
+          b.className = "balloon";
+          b.style.left = Math.random() * 100 + "vw";
+          b.style.backgroundColor = `hsl(${Math.random() * 360}, 80%, 70%)`;
+          b.style.animationDuration = 5 + Math.random() * 5 + "s";
+          document.body.appendChild(b);
+        }
+      });
+
+      musicBtn.addEventListener("click", () => {
+        if (music.paused) {
+          music.play();
+          musicBtn.textContent = "🔊 Music";
+        } else {
+          music.pause();
+          musicBtn.textContent = "🔇 Music";
+        }
+      });
+
+      function generateBalloon(x, y) {
+        const b = document.createElement("div");
+        b.className = "balloon single-balloon";
+        b.style.left = `${x}px`;
+        b.style.top = `${y}px`;
+        b.style.backgroundColor = `hsl(${Math.random() * 360}, 80%, 70%)`;
+        document.body.appendChild(b);
+
+        setTimeout(() => {
+          b.remove();
+        }, 3000);
+      }
+
+      // Deteksi klik di luar card
+      document.body.addEventListener("click", (e) => {
+        const isInCard = document.getElementById("main").contains(e.target);
+        const isSplash = document.getElementById("splash").contains(e.target);
+        if (!isInCard && !isSplash) {
+          generateBalloon(e.clientX, e.clientY);
+        }
+      });
+    </script>
+  </body>
+</html>
